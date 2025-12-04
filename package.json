@@ -32,7 +32,7 @@
     "yallist": "^5.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.12"
+    "@tailwindcss/cli": "^4.1.17"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -40,5 +40,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisTorresBenavente/PaginaWeb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LuisTorresBenavente/PaginaWeb/issues"
+  },
+  "homepage": "https://github.com/LuisTorresBenavente/PaginaWeb#readme"
 }
