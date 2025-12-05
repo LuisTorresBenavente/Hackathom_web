@@ -84,11 +84,15 @@ document.getElementById("modelo").addEventListener("change", function() {
     }
 });
 
-// Cargar fechas de registro
-document.addEventListener("DOMContentLoaded", function() {
-    const pruebaSelect = document.getElementById("prueba");
+// Establecer fecha mínima en mantenimiento (hoy)
+document.addEventListener('DOMContentLoaded', function() {
+    const hoy = new Date();
+    const fechaMinima = hoy.toISOString().split('T')[0];
+    document.getElementById('mantenimiento').min = fechaMinima;
+    
+    const pruebaSelect = document.getElementById('prueba');
     fechasRegistro.forEach(fecha => {
-        const option = document.createElement("option");
+        const option = document.createElement('option');
         option.value = fecha;
         option.textContent = fecha;
         pruebaSelect.appendChild(option);
