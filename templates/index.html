@@ -6,7 +6,7 @@
     <title>Bienvenido - Registro de Equipos</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 </head>
-<body style="background-image: url('/static/image/fondo.jpg');">
+<body>
     <div class="container">
         <div class="logo-section">
             <img src="/static/image/logo.jpg" alt="Logo">
@@ -87,6 +87,7 @@
             </div>
 
             <button type="submit">Registrar</button>
+            <button type="button" id="verEquiposBtn" class="btn-secondary">Ver Equipos Registrados</button>
         </form>
         <div id="mensaje" class="mensaje"></div>
     </div>
