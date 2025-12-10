@@ -3,15 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos</title>
+    <title>Equipos Registrados</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/equipos.css') }}">
 </head>
-<body style="background-image: url('/static/image/fondo.jpg');">
+<body>
     <div class="container">
-        <h1>Lista de Equipos</h1>
-        <div id="listaEquipos"></div>
+        <div class="header">
+            <h1>📋 Equipos Registrados</h1>
+            <a href="{{ url_for('index') }}" class="btn-volver">← Volver al Registro</a>
+        </div>
+
+        <div id="listaEquipos" class="lista-equipos">
+            <div class="cargando">Cargando equipos...</div>
+        </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+    <!-- Modal para editar -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Equipo</h2>
+                <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            </div>
+            <form id="formEditar" class="modal-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editCodigo">Código:</label>
+                        <input type="text" id="editCodigo" name="codigo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTipo">Tipo:</label>
+                        <input type="text" id="editTipo" name="tipo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMarcas">Marca:</label>
+                        <input type="text" id="editMarcas" name="marcas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editModelo">Modelo:</label>
+                        <input type="text" id="editModelo" name="modelo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSO">Sistema Operativo:</label>
+                        <input type="text" id="editSO" name="so" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAlmacenamiento">Almacenamiento (GB):</label>
+                        <input type="number" id="editAlmacenamiento" name="almacenamiento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRam">RAM (GB):</label>
+                        <input type="number" id="editRam" name="ram" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEstado">Estado:</label>
+                        <select id="editEstado" name="estado" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Mantenimiento">En Mantenimiento</option>
+                            <option value="Defectuoso">Defectuoso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMantenimiento">Fecha de Mantenimiento:</label>
+                        <input type="date" id="editMantenimiento" name="mantenimiento" required>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="btn-guardar">💾 Guardar Cambios</button>
+                    <button type="button" class="btn-cancelar" onclick="cerrarModal()">✕ Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/equipos.js') }}"></script>
 </body>
 </html>
+
