@@ -148,3 +148,32 @@ function mostrarMensaje(texto, tipo) {
     div.style.display = "block";
     setTimeout(() => {div.style.display = "none";}, 3000);
 }
+
+// Botón para ver equipos registrados
+document.addEventListener('DOMContentLoaded', function() {
+    const verEquiposBtn = document.getElementById('verEquiposBtn');
+    if (verEquiposBtn) {
+        verEquiposBtn.addEventListener('click', async function() {
+            try {
+                const response = await fetch('/api/equipos', {
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok && data.equipos) {
+                    if (data.equipos.length === 0) {
+                        mostrarMensaje('No hay equipos registrados', 'info');
+                    } else {
+                        window.location.href = '/equipos';
+                    }
+                } else {
+                    mostrarMensaje('Error al obtener los equipos', 'error');
+                }
+            } catch (error) {
+                mostrarMensaje('Error: ' + error.message, 'error');
+            }
+        });
+    }
+});
